@@ -2,7 +2,7 @@
 
 
 ## GPT API Flow Chart
-![flow chart](../flowChart/gptAPI.png)
+![flow chart](../../flowChart/gptAPI.png)
 
 
 ## api 핵심
