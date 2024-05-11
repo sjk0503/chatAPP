@@ -101,6 +101,7 @@ for out in output:
 
 ## gpt api와 google search api 결합
 + 위에서 google search api를 통해 가져온 내용을 gpt api에게 넘겨주며 질문한다.
+
 결합한 코드
 ```python
 import os
@@ -150,8 +151,9 @@ print(chat_completion.choices[0].message.content)
 ```
 
 ### api 결합 전 후 차이점(쿵푸팬더4 개봉일 요청하기)
-(결합 전 실행결과(gpt-4-turbo))
+(결합 전 실행결과)
 > 쿵푸 팬더 4(Kung Fu Panda 4)는 2024년 3월 8일에 개봉할 예정입니다. 이 영화는 유명한 애니메이션 "쿵푸 팬더" 시리즈의 네 번째 작품으로, 팬들이 기대하는 작품 중 하나입니다.
+
 (결합 후 실행결과)
 > 영화 "쿵푸팬더 4"의 개봉일은 2024년 4월 10일입니다.
 
