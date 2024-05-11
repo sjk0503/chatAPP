@@ -1,9 +1,9 @@
 # GPT API
 
 ## GPT API Flow Chart
-![flow chart](./flowChart/gpt_api_flowchart.png)
+![flow chart](main/flowChart/gpt_api_flowchart.png)
 
-## flow chart 핵심
+## api 핵심
 1. gpt 3.5와 gpt 4.0을 함께 사용
 2. gpt 4.0의 검색 기능을 활용하여 최신 정보 확보
 
