@@ -1,7 +1,7 @@
 # GPT API
 
 ## GPT API Flow Chart
-![flow chart](main/flowChart/gpt_api_flowchart.png)
+![flow chart](./flowChart/gptAPI.png)
 
 ## api 핵심
 1. gpt 3.5와 gpt 4.0을 함께 사용
