@@ -21,3 +21,5 @@ Flutter, AWS, openAI API, Hive DB
 
 # 개발현황
 [API](./api)
+
+## 현재진행상황
