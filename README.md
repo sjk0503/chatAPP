@@ -19,3 +19,5 @@
 # 기술스택
 Flutter, AWS, openAI API, Hive DB
 
+# 개발현황
+[API](./api)
