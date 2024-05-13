@@ -148,5 +148,5 @@ status 목록
 
 ## 예정된 진행 사항
 
-Assistant API를 활용하여 임시 영화 추천 챗봇 구현해보기
-GPTs와 Assistant API를 이용하여 자체 API 구현 여부 확인하기
+- Assistant API를 활용하여 임시 영화 추천 챗봇 구현해보기
+- GPTs와 Assistant API를 이용하여 자체 API 구현 여부 확인하기
