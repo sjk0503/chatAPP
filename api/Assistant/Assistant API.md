@@ -31,11 +31,11 @@ API_KEY = os.environ['OPENAI_API_KEY']
 client = OpenAI(api_key=API_KEY)
 
 # asst_0cxYrVKIqNqn8xfoqOYF05UX
-# assistant = client.beta.assistants.create(
-#   name="Math Tutor",
-#   instructions="You are a personal math tutor. Write and run code to answer math questions.",
-#   tools=[{"type": "code_interpreter"}],
-#   model="gpt-4-turbo",
-# )
-# print(assistant) #JSON형태로 출력
+assistant = client.beta.assistants.create(
+   name="Math Tutor",
+   instructions="You are a personal math tutor. Write and run code to answer math questions.",
+   tools=[{"type": "code_interpreter"}],
+   model="gpt-4-turbo",
+ )
+print(assistant) #JSON형태로 출력
 ```
