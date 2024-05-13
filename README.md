@@ -28,7 +28,7 @@ Flutter, AWS, openAI API, Hive DB
 5/12
 > gpt-4-turbo api로 검색 기능을 사용하려 하였으나, 검색이 불가능한 문제점 발견
 > 
-> 대체 방안으로 1) GPTs와 OpenAI assistant 결합(고태현), 2) gpt api와 google search api 결합(이하린)
+> 대체 방안으로 1) GPTs와 OpenAI assistant 결합(고태현), 2) gpt fine-tuning api와 google search api 결합(이하린)
 > 
 > 1)과 2) 총 두 가지 방법을 테스트할 예정
 > 
