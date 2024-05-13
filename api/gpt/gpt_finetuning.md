@@ -8,6 +8,7 @@ Fine-tunning 을 통해 다음과 같은 효과를 기대할 수 있다:
 
 가격은 아래와 같다. 
 |모델|Chat-GPT fine-tuned|chatGPT(4K)|CPT-4(8K)|
+|---|---|---|---|
 |학습|$0.0080|---|---|
 |input usage(인풋 텍스트)|$0.0120|$0.0015|$0.0300|
 |output usage(생성)|$0.0160|$0.0020|$0.0600|
@@ -107,7 +108,9 @@ answer:
 또한 데이터셋의 개수는 최소 10개 이상이어야 하며, 그보다 작은 경우 에러가 나며 fine-tuning이 진행되지 않는 점을 유의하낟.
 아래는 예시로 생성한 jsonl 데이터이다.
 <details>
-    <summary>자세히</summary>
+    <summary>자세히</summary
+                  <!--summary 아래 빈칸 공백 두고 내용을 적는공간-->
+  
     train.jsonl
 ````
 {"messages": [{"role": "system", "content": "instruction2"}, {"role": "user", "content": "오만원에 있는 사람이 누구게?" },{ "role": "assistant", "content": "''' This question is about general common-sense conversations. 다미 can answer this question, but sometimes gets confused.'''\n다미:\n신사임당이잖아ㅡㅡ 이정도는 나도 안다구!!"}]}    
