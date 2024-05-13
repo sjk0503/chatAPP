@@ -137,14 +137,14 @@ status는 Assistant가 작업을 수행함에 따라(도구 사용 및 메시지
 
 status 목록
 
-- queued: 아직 실행이 되지 않고 대기중인 상태
-- in_progress: 처리중
-- requires_action: 사용자 입력 대기중
-- cancelling: 작업 취소중
-- cancelled: 작업 취소 완료
-- failed: 실패(오류)
-- completed: 작업 완료
-- expired: 작업 만료
+- `queued`: 아직 실행이 되지 않고 대기중인 상태
+- `in_progress`: 처리중
+- `requires_action`: 사용자 입력 대기중
+- `cancelling`: 작업 취소중
+- `cancelled`: 작업 취소 완료
+- `failed`: 실패(오류)
+- `completed`: 작업 완료
+- `expired`: 작업 만료
 
 ## 예정 진행 사항
 
