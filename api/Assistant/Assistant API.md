@@ -41,7 +41,7 @@ assistant = client.beta.assistants.create(
 print(assistant) #JSON형태로 출력
 ```
 
-출력 결과
+##### 출력 결과
 Assistant(id='asst_yWNa4jwdfun1OJmCS4KHGYlx', created_at=1715568546, description=None, instructions='You are a personal math tutor. Write and run code to answer math questions.', metadata={}, model='gpt-4-turbo', name='Math Tutor', object='assistant', tools=[CodeInterpreterTool(type='code_interpreter')], response_format='auto', temperature=1.0, tool_resources=ToolResources(code_interpreter=ToolResourcesCodeInterpreter(file_ids=[]), file_search=None), top_p=1.0)
 
 ### Threads란?
@@ -65,5 +65,19 @@ thread = client.beta.threads.create()
 
 print(thread)
 ```
-출력 결과
+##### 출력 결과
 Thread(id='thread_4PeKxu4NS69G5p1OuPwOojUo', created_at=1715568904, metadata={}, object='thread', tool_resources=ToolResources(code_interpreter=None, file_search=None))
+
+다음은 스레드에 메세지를 추가해 보겠습니다.
+
+```python
+message = client.beta.threads.messages.create(
+  thread_id="thread_Ead7OoHZX3VBKBRA2pYJNmD6", # 스레드 아이디 입력
+  role="user",
+  content="I need to solve the equation `3x + 11 = 14`. Can you help me?"
+)
+print(message)
+```
+
+##### 출력 결과
+Message(id='msg_MkJDG8GmNlrvaDxPDtCFKCeD', assistant_id=None, attachments=[], completed_at=None, content=[TextContentBlock(text=Text(annotations=[], value='I need to solve the equation `3x + 11 = 14`. Can you help me?'), type='text')], created_at=1715569080, incomplete_at=None, incomplete_details=None, metadata={}, object='thread.message', role='user', run_id=None, status=None, thread_id='thread_Ead7OoHZX3VBKBRA2pYJNmD6')
