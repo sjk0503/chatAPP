@@ -18,3 +18,24 @@ Assistants는 OpenAI의 모델을 사용 하고 파일에 액세스하고 영구
 ### Playground 에서 Assistants 생성
 Assistants를 활용해보기 가장 쉬운 방법은 [Assistants Playground](https://platform.openai.com/playground)를 통하는 것입니다.
 ![assistant-create](https://github.com/sjk0503/chatAPP/assets/100744515/248ce798-d147-4d9c-a4aa-0cf0d0ccffb4)
+
+### Assistants API로 생성
+Assistants API를 통해 직접 Assistants를 생성할 수도 있습니다.
+
+'''
+import os
+from openai import OpenAI
+
+API_KEY = os.environ['OPENAI_API_KEY']
+
+client = OpenAI(api_key=API_KEY)
+
+# asst_0cxYrVKIqNqn8xfoqOYF05UX
+# assistant = client.beta.assistants.create(
+#   name="Math Tutor",
+#   instructions="You are a personal math tutor. Write and run code to answer math questions.",
+#   tools=[{"type": "code_interpreter"}],
+#   model="gpt-4-turbo",
+# )
+# print(assistant) #JSON형태로 출력
+'''
