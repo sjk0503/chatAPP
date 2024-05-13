@@ -3,9 +3,12 @@
 
 ### Assistants란?
 Assistants는 OpenAI의 모델을 사용 하고 파일에 액세스하고 영구 스레드를 유지하며 도구를 호출할 수 있는 특수 목적 AI를 나타냅니다 .
+### GPT vs Assistant
+GPT와 Assistants API의 주요 차이점은 아래 표에 나와 있습니다.
+
+![gpt vs assistant](https://github.com/sjk0503/chatAPP/assets/100744515/5b915413-d69e-442d-8d75-95a49362c100)
 
 ### Assistants API의 기본 요소
-
 ![diagram-assistant](https://github.com/sjk0503/chatAPP/assets/100744515/67c1571d-a763-4c5e-8a32-b7ac8a6fbab8)
 
 - Assistants: 모델(GPT-3.5, GPT-4, etc), instruction(지시문/프롬프트), tools(도구), files(업로드한 파일)를 캡슐화하는 역할입니다.
