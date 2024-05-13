@@ -25,8 +25,29 @@ Configure창에서 대표 이미지, 이름(Name), 간단한 소개(Description)
 ![gpts configure](https://github.com/sjk0503/chatAPP/assets/100744515/3c0c1fc5-7d8a-413b-9fc4-7e308814bdd7)
 
 - Knowledge에는 자료를 업로드하여 GPT가 해당 자료를 참고하여 답변을 제공할 수 있습니다.
-- Capabilities에는 GPT 자체 기능의 사용 여부를 설정할 수 있습니다
+- Capabilities에는 GPT 자체 기능의 사용 여부를 설정할 수 있습니다.
 
   - Web Browsing: 실시간으로 인터넷을 검색하여 최신 정보 제공
   - DALL-E Image Generation: DALL-E로 AI 이미지 생성
-  - Code Interpreter: 입력한 정보를 파이썬으로 분석하여 답변 제
+  - Code Interpreter: 입력한 정보를 파이썬으로 분석하여 답변 제공
+
+## GPTs Action
+
+### GPTs Action이란?
+
+GPTs Action은 간단하게 사용자가 자신의 API를 GPT에 연결하여 외부 데이터를 사용 할수 있게 하는 기능 입니다. 플랫폼 내에서 사용자가 자신의 API를 GPT에 연결하여 외부 데이터에 접근하거나 상호작용할 수 있게 할 수 있도록 하는 역할을 합니다.
+
+### GPTs Action 생성 방법
+
+![gpts action](https://github.com/sjk0503/chatAPP/assets/100744515/177ff416-e178-462f-ab1d-9d4274220723)
+
+##### 인증 방법 선택(Authentication)
+
+- API 접근을 위한 인증 방법을 설정할 수 있습니다.
+None(없음), API Key(API 키), OAuth(OAuth 인증) 중에서 선택하여 설정할 수 있습니다.
+
+##### 스키마(Schema)입력
+
+- GPT가 API에 접근을 정의하는 스키마를 입력합니다. (스키마는 OpenAPI 형식을 따릅니다.)
+
+GPTs에서 제공하는 ActionsGPT를 이용하여 스키마를 생성할 수 있습니다.
