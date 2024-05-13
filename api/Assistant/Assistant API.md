@@ -28,6 +28,7 @@ from openai import OpenAI
 
 API_KEY = os.environ['OPENAI_API_KEY']
 
+# OpenAI API를 사용하기 위한 클라이언트 객체 생성
 client = OpenAI(api_key=API_KEY)
 
 # asst_0cxYrVKIqNqn8xfoqOYF05UX
@@ -39,3 +40,30 @@ assistant = client.beta.assistants.create(
  )
 print(assistant) #JSON형태로 출력
 ```
+
+출력 결과
+Assistant(id='asst_yWNa4jwdfun1OJmCS4KHGYlx', created_at=1715568546, description=None, instructions='You are a personal math tutor. Write and run code to answer math questions.', metadata={}, model='gpt-4-turbo', name='Math Tutor', object='assistant', tools=[CodeInterpreterTool(type='code_interpreter')], response_format='auto', temperature=1.0, tool_resources=ToolResources(code_interpreter=ToolResourcesCodeInterpreter(file_ids=[]), file_search=None), top_p=1.0)
+
+### Threads란?
+스레드는 어시스턴트와 사용자 간의 대화 세션입니다. 스레드는 메시지 기록을 저장하고 모델의 컨텍스트 길이에 비해 대화가 너무 길어지면 이를 잘라 애플리케이션 개발을 단순화합니다.
+
+### Threads
+다음으로, 새로운 Thread를 생성하고 그 안에 Message를 추가합니다.
+Thread 는 우리 대화의 상태를 유지해 주는 역할을 합니다.
+이전 까지의 대화내용을 기억하고 있기 때문에, 매번 전체 메시지 기록을 다시 보내지 않아도 됩니다.
+
+##### 정리
+1. Threads: Message 풀을 관리하는 집합체. Message 의 상태 관리도 포함입니다.
+2. Message: 단일 메시지 이며, 각 Message 는 역할(role) 과 컨텐츠(content) 로 구성되어 있습니다.
+즉, 1개의 Thread 는 여러 개의 순차적으로 연결된 Message 들을 가지고 있습니다. Thread 에 새로운 Message 를 추가할 수 있습니다.
+
+새로운 대화 스레드를 생성해 보겠습니다.
+
+```python
+# 새로운 스레드를 생성
+thread = client.beta.threads.create()
+
+print(thread)
+```
+출력 결과
+Thread(id='thread_4PeKxu4NS69G5p1OuPwOojUo', created_at=1715568904, metadata={}, object='thread', tool_resources=ToolResources(code_interpreter=None, file_search=None))
