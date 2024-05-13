@@ -7,3 +7,8 @@ Assistants는 OpenAI의 모델을 사용 하고 파일에 액세스하고 영구
 ### Assistants API의 기본 요소
 
 ![diagram-assistant](https://github.com/sjk0503/chatAPP/assets/100744515/67c1571d-a763-4c5e-8a32-b7ac8a6fbab8)
+
+- Assistants: 모델(GPT-3.5, GPT-4, etc), instruction(지시문/프롬프트), tools(도구), files(업로드한 파일)를 캡슐화하는 역할입니다.
+- Threads: 하나의 대화 채널입니다. 메시지(Message)를 담을 수 있으며, ChatGPT 기준 하나의 대화 스레드의 개념으로 생각하면 됩니다.
+- Runs: Assistant + Thread 에서의 실행을 구동합니다. Run 단계에서 tools(도구) 의 활용 여부가 결정되기도 합니다. 또한, Run 을 수행한 후 Assistant 가 응답한 결과를 처리할 때도 사용할 수 있습니다.
+위의 요소들이 유기적으로 동작하면서 결국 상태가 있는(stateful) 사용자 경험을 제공하게 됩니다.
