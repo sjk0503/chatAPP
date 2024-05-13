@@ -22,7 +22,7 @@ Assistants를 활용해보기 가장 쉬운 방법은 [Assistants Playground](ht
 ### Assistants API로 생성
 Assistants API를 통해 직접 Assistants를 생성할 수도 있습니다.
 
-'''python
+```python
 import os
 from openai import OpenAI
 
@@ -38,4 +38,4 @@ client = OpenAI(api_key=API_KEY)
 #   model="gpt-4-turbo",
 # )
 # print(assistant) #JSON형태로 출력
-'''
+```
