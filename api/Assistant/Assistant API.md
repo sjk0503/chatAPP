@@ -17,3 +17,4 @@ Assistants는 OpenAI의 모델을 사용 하고 파일에 액세스하고 영구
 
 ### Playground 에서 Assistants 생성
 Assistants를 활용해보기 가장 쉬운 방법은 [Assistants Playground](https://platform.openai.com/playground)를 통하는 것입니다.
+![assistant-create](https://github.com/sjk0503/chatAPP/assets/100744515/248ce798-d147-4d9c-a4aa-0cf0d0ccffb4)
