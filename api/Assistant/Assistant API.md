@@ -12,3 +12,8 @@ Assistants는 OpenAI의 모델을 사용 하고 파일에 액세스하고 영구
 - Threads: 하나의 대화 채널입니다. 메시지(Message)를 담을 수 있으며, ChatGPT 기준 하나의 대화 스레드의 개념으로 생각하면 됩니다.
 - Runs: Assistant + Thread 에서의 실행을 구동합니다. Run 단계에서 tools(도구) 의 활용 여부가 결정되기도 합니다. 또한, Run 을 수행한 후 Assistant 가 응답한 결과를 처리할 때도 사용할 수 있습니다.
 위의 요소들이 유기적으로 동작하면서 결국 상태가 있는(stateful) 사용자 경험을 제공하게 됩니다.
+
+## Assistants API
+
+### Playground 에서 Assistants 생성
+Assistants를 활용해보기 가장 쉬운 방법은 [Assistants Playground](https://platform.openai.com/playground)를 통하는 것입니다.
