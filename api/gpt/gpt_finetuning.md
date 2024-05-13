@@ -1,4 +1,4 @@
-#개요
+# 개요
 
 Fine-tunning 을 통해 다음과 같은 효과를 기대할 수 있다:
 1) 프롬프팅을 통한 태스크 수행보다 더 좋은 퀄리티의 생성 결과물
@@ -14,7 +14,7 @@ Fine-tunning 을 통해 다음과 같은 효과를 기대할 수 있다:
 
 표에서 볼 수 있듯 fine tuning 된 모델은 chat gpt 4k 기본 모델 대비 8배 비싸다.
 
-#Prompt Enginerring 을 통해 Assistant 구현
+# Prompt Enginerring 을 통해 Assistant 구현
 
 먼저 Prompt를 통해 Assistant의 페르소나를 구현한다.
 
@@ -130,7 +130,7 @@ answer:
 
 </details>
 
-#Fine-tuning 수행
+# Fine-tuning 수행
 1. 먼저 로컬에 저장되어 있는 학습데이터(train.jsonl)을 업로드한다.
 ```
 from openai import OpenAI
