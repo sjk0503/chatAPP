@@ -125,3 +125,20 @@ print(run)
  'thread_id': 'thread_Ead7OoHZX3VBKBRA2pYJNmD6',  
  'tools': [],  
  'usage': None}  
+
+Chat Completions API에서 완성을 생성하는 것과 달리, Run을 생성하는 것은 비동기 작업입니다.
+
+이는 Run의 메타데이터와 함께 즉시 반환되며, status 는 queued(대기중) 으로 표기됩니다.
+
+status는 Assistant가 작업을 수행함에 따라(도구 사용 및 메시지 추가와 같은) 업데이트될 것입니다. 상태 값은 아래의 목록을 참고하세요.
+
+status 목록
+
+- queued: 아직 실행이 되지 않고 대기중인 상태
+- in_progress: 처리중
+- requires_action: 사용자 입력 대기중
+- cancelling: 작업 취소중
+- cancelled: 작업 취소 완료
+- failed: 실패(오류)
+- completed: 작업 완료
+- expired: 작업 만료
