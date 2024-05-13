@@ -1,5 +1,5 @@
 #개요
-***
+
 Fine-tunning 을 통해 다음과 같은 효과를 기대할 수 있다:
 1) 프롬프팅을 통한 태스크 수행보다 더 좋은 퀄리티의 생성 결과물
 2) 프롬프트에 넣을 수 있는 few-shot 예제보다 더 많은 예제를 통해 학습
@@ -15,7 +15,7 @@ Fine-tunning 을 통해 다음과 같은 효과를 기대할 수 있다:
 표에서 볼 수 있듯 fine tuning 된 모델은 chat gpt 4k 기본 모델 대비 8배 비싸다.
 
 #Prompt Enginerring 을 통해 Assistant 구현
-***
+
 먼저 Prompt를 통해 Assistant의 페르소나를 구현한다.
 
 fine_tunning.py
@@ -76,7 +76,7 @@ answer:
 대표적인 문제점은 아래와 같다.
 
 ## 문제점
-***
+
 1. Factual Error
   모델은 종종 거짓 정보를 지어낸다. 예를 들어 '오늘이 며칠인가'를 물었을때, 거짓된 정보값으로 대답을 한다. 
   이 부분은 다음과 같은 해결책을 사용할 수 있다.
@@ -90,7 +90,7 @@ answer:
 
 
 # Fine-tuning 데이터 준비
-***
+
 학습을 위해서는 여러개의 JSON으로 구성된 JSONL 형태의 데이터가 필요하다.
 ```
 {"messages": [{"role": "system", "content": "instruction2"}, {"role": "user", "content": "다미야 안녕??"}, {"role": "assistant", "content": "'''이 질문은 일상생활 잡담에 해당합니다.'''\n다미: 안녕 안녕! 뭐해?"}]}
@@ -131,7 +131,6 @@ answer:
 </details>
 
 #Fine-tuning 수행
-***
 1. 먼저 로컬에 저장되어 있는 학습데이터(train.jsonl)을 업로드한다.
 ```
 from openai import OpenAI
@@ -196,7 +195,6 @@ def chat_gpt(prompt):
 ```
 
 #데이터 저장
-***
 매번 대화 데이터셋을 수동으로 추가하는것은 번거로우므로 대화가 끝난 후 모델과 나눈 대화를 업데이트 하도록 하였다.
 ```
 data_list=[]
