@@ -33,3 +33,9 @@ Flutter, AWS, openAI API, Hive DB
 > 1)과 2) 총 두 가지 방법을 테스트할 예정
 > 
 > 개발과 동시에 api를 사용할 수 있도록 AWS 서버 구축(김성재)도 동시에 진행함
+
+6/3
+> Flutter App 개발 진행 중 (고태현)
+> GPTs와 assistant로 개발 진행 중 (이하린)
+> gpt fine-tuning은 gpt 속도를 고려하여 추후 사용할지 말지 고려
+> 외부 API를 결합한 gpt 모델과 서버리스 api 개발 중 (김성재)
