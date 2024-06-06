@@ -19,7 +19,7 @@
 + 이하린: api 개발
 
 # 기술스택
-Flutter, AWS, openAI API, Hive DB
+Flutter, AWS, openAI API, MySQL DB
 
 # 개발현황
 [API](./api)
