@@ -1,5 +1,5 @@
 # api 정리
-## 회원가입 api
+## 회원가입 api(POST)
 요청 데이터
 ```python
 data = {
