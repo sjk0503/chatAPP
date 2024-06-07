@@ -1,5 +1,6 @@
 # api 정리
 ## 회원가입 api(POST)
+아이디, 비밀번호와 이름을 받아서 db에 저장하고 동시에 openAI thread id 를 생성하여 db에 저장한다.
 ### 요청 데이터
 ```python
 data = {
