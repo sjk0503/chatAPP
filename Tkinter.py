@@ -1,5 +1,5 @@
 from tkinter import *
-import Project  # Project.py fayli bilan bir xil papkada ekanligiga ishonch hosil qiling
+import Project  
 
 win = Tk()
 
