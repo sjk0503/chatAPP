@@ -392,7 +392,6 @@ def wait_on_run(run, thread):
         thread_id=thread.id,
         run_id=run.id
         )
-        print(run_check.status)
         if run_check.status in ['queued','in_progress']:
             time.sleep(2)
         else:
