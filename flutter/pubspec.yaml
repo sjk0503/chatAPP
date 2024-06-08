@@ -44,5 +44,8 @@ flutter:
     - assets/images/profile/lawyer.jpg
     - assets/images/profile/music.png
     - assets/images/profile/tarot.jpg
+    - assets/images/profile/doctor.jpg
+    - assets/images/profile/announcer.jpg
+    - assets/images/profile/shop.jpg
 
 
