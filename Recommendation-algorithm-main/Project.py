@@ -68,11 +68,5 @@ def main(favorite_movie, genre, country, rating):
     for movie in recommended_movies:
         result += f"Title: {movie}\n"
     return result
-favorite_movie = "Inception"
-genre = "Action"
-country = "United States"
-rating = 7.5
 
-result = main(favorite_movie, genre, country, rating)
-print(result)
 
