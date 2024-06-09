@@ -4,7 +4,7 @@
 2. [thread id, assistant id 생성 api (회원가입 api와 연결)](#thread-id-assistant-id-생성-api)
 3. [dami api](#dami-api)
 4. [save chat api (dami api와 연결)](#save-chat-api)
-5. [search api(dami api와 연결)](search-api)
+5. [search api(dami api와 연결)](#search-api)
 ## 회원가입 api
 아이디, 비밀번호와 이름을 받아서 db에 저장하고 동시에 openAI thread id 를 생성하여 db에 저장한다.
 ### 요청 데이터
