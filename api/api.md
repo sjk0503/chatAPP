@@ -1,7 +1,7 @@
 # api 정리
 ## api 리스트
 1. [회원가입 api](#회원가입-api)
-2. [thread id, assistant id 생성 api (회원가입 api와 연결)](#thread-id-assistant-id-생성-api)
+2. [사용자 정보 저장 api (회원가입 api와 연결)](#thread-id-assistant-id-생성-api)
 3. [dami api](#dami-api)
 4. [save chat api (dami api와 연결)](#save-chat-api)
 5. [search api(dami api와 연결)](#search-api)
@@ -9,8 +9,7 @@
 아이디, 비밀번호와 이름을 받아서 쓰레드ID를 생성하고, DB에 저장하는 API를 호출한 뒤, 사용자 정보를 DB에 저장한다.</br>
 DB에 저장하는 API와 분리하는 이유는 rds와 연결한 lambda 함수는 보안상 문제로 쓰레드ID를 생성할 수 없기 때문.
 ### 코드 링크
-[sign_up.py](https://github.com/sjk0503/chatAPP/blob/main/aws/sign_up.py), 
-[save_userData_DB.py](https://github.com/sjk0503/chatAPP/blob/main/aws/save_userData_DB.py)
+[sign_up.py](https://github.com/sjk0503/chatAPP/blob/main/aws/sign_up.py)
 ### 요청 데이터
 ```python
 data = {
@@ -27,12 +26,17 @@ data = {
 3. 서버 에러
     >'statusCode': 500
 
-## thread id, assistant id 생성 api
-id 생성 후, db에 저장한다.
+## 사용자 정보 저장 api
+요청받은 데이터들을 db에 저장한다.
+### 코드 링크
+[save_userData_DB.py](https://github.com/sjk0503/chatAPP/blob/main/aws/save_userData_DB.py)
 ### 요청 데이터
 ```python
 data = {
-    "userid": userid
+    "userid": userid,
+    "password": password,
+    "name": name,
+    "threadid": threadid
 }
 ```
 ### 정상 메세지
