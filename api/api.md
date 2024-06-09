@@ -6,7 +6,8 @@
 4. [save chat api (dami api와 연결)](#save-chat-api)
 5. [search api(dami api와 연결)](#search-api)
 ## 회원가입 api
-아이디, 비밀번호와 이름을 받아서 db에 저장하고 동시에 openAI thread id 를 생성하여 db에 저장한다.
+아이디, 비밀번호와 이름을 받아서 쓰레드ID를 생성하고, DB에 저장하는 API를 호출한 뒤, 사용자 정보를 DB에 저장한다.</br>
+DB에 저장하는 API와 분리하는 이유는 rds와 연결한 lambda 함수는 보안상 문제로 쓰레드ID를 생성할 수 없기 때문.
 ### 요청 데이터
 ```python
 data = {
