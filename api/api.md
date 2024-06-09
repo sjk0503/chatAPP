@@ -1,6 +1,6 @@
 # api 정리
 ## api 리스트
-1. 회원가입 api
+1. [회원가입 api](##-회원가입-api(POST))
 2. thread id, assistant id 생성 api (회원가입 api와 연결)
 3. dami api
 4. save chat api (dami api와 연결)
