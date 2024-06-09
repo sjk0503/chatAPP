@@ -1,7 +1,7 @@
 # api 정리
 ## api 리스트
 1. [회원가입 api](##-회원가입-api)
-2. [thread id, assistant id 생성 api (회원가입 api와 연결)](##-thread-id,-assistant-id-생성-api-(회원가입 api와 연결))
+2. [thread id, assistant id 생성 api (회원가입 api와 연결)](##-thread-id,-assistant-id-생성-api)
 3. dami api
 4. save chat api (dami api와 연결)
 ## 회원가입 api
@@ -22,7 +22,7 @@ data = {
 3. 서버 에러
     >'statusCode': 500
 
-## thread id, assistant id 생성 api (회원가입 api와 연결)
+## thread id, assistant id 생성 api
 id 생성 후, db에 저장한다.
 ### 요청 데이터
 ```python
