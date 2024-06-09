@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영화 추천 시스템</title>
+</head>
+<body>
+    <h1>좋아하는 영화, 장르, 국가 및 최소 평점을 입력하세요.</h1>
+    <form id="recommendation-form" method="post" action="/recommend">
+        <label for="favorite_movie">좋아하는 영화:</label><br>
+        <input type="text" id="favorite_movie" name="favorite_movie"><br><br>
+        <label for="genre">장르:</label><br>
+        <input type="text" id="genre" name="genre"><br><br>
+        <label for="country">국가:</label><br>
+        <input type="text" id="country" name="country"><br><br>
+        <label for="rating">최소 평점:</label><br>
+        <input type="text" id="rating" name="rating"><br><br>
+        <button type="submit">추천</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('recommendation-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var form = event.target;
+            var formData = new FormData(form);
+
+            fetch(form.action, {
+                method: form.method,
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('result').innerHTML = data;
+            })
+            .catch(error => {
+                document.getElementById('result').innerHTML = '오류 발생: ' + error;
+            });
+        });
+    </script>
+</body>
+</html>
