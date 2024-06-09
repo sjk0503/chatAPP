@@ -4,6 +4,7 @@
 2. [thread id, assistant id 생성 api (회원가입 api와 연결)](#thread-id-assistant-id-생성-api)
 3. [dami api](#dami-api)
 4. [save chat api (dami api와 연결)](#save-chat-api)
+5. [search api(dami api와 연결)](search-api)
 ## 회원가입 api
 아이디, 비밀번호와 이름을 받아서 db에 저장하고 동시에 openAI thread id 를 생성하여 db에 저장한다.
 ### 요청 데이터
@@ -61,6 +62,7 @@ data = {
    >'statusCode': 500
 
 ## save chat api
+dami api에서 요청 받은 사용자 input과 반환할 gpt output을 db에 저장한다.
 ### 요청 데이터
 ```python
 data = {
@@ -74,5 +76,21 @@ data = {
 ### 에러 메세지
 1. db 에러
    >'statusCode': 300
+2. 서버 에러
+   >'statusCode': 500
+
+## search api
+dami api에서 요청하는 api, 검색할 쿼리에 맞는 정보를 output한다.
+### 요청 데이터
+```python
+data = {
+    "query": query
+}
+```
+### 정상 메세지
+>'statusCode': 200
+### 에러 메세지
+1. 답변 생성 에러
+   >'statusCode': 400
 2. 서버 에러
    >'statusCode': 500
