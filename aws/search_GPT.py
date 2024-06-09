@@ -1,6 +1,6 @@
-# Lambda 함수로 작성됨
-# 검색어와 함께 요청 시, google search api를 통해 정보를 가져온 뒤,
-# gpt에게 정보를 전달, gpt output
+# 검색할 쿼리를 데이터로 요청함
+# Google Search API를 통해 검색한 내용들을 가져옴
+# 현재 시간과 비교하여 쿼리와 가장 적절한 정보를 리턴함
 
 import json
 import os
