@@ -9,7 +9,7 @@
 아이디, 비밀번호와 이름을 받아서 쓰레드ID를 생성하고, DB에 저장하는 API를 호출한 뒤, 사용자 정보를 DB에 저장한다.</br>
 DB에 저장하는 API와 분리하는 이유는 rds와 연결한 lambda 함수는 보안상 문제로 쓰레드ID를 생성할 수 없기 때문.
 ### 코드 링크
-[sign_up.py](https://github.com/sjk0503/chatAPP/blob/main/aws/sign_up.py)
+[sign_up.py](https://github.com/sjk0503/chatAPP/blob/main/aws/sign_up.py), 
 [save_userData_DB.py](https://github.com/sjk0503/chatAPP/blob/main/aws/save_userData_DB.py)
 ### 요청 데이터
 ```python
