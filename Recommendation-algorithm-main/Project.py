@@ -4,7 +4,7 @@ from scipy.sparse import csr_matrix
 import json
 
 def drop_trash_data(_movie_df):
-    # indices_to_drop ro'yxatini tekshirish uchun yangilangan
+    # indices_to_drop
     indices_to_drop = [19730, 29502, 35585]
     valid_indices_to_drop = [index for index in indices_to_drop if index < len(_movie_df)]
 
@@ -76,10 +76,3 @@ rating = 7.5
 result = main(favorite_movie, genre, country, rating)
 print(result)
 
-favorite_movie = "Inception"
-genre = "Action"
-country = "United States"
-rating = 7.5
-
-result = main(favorite_movie, genre, country, rating)
-print(result)
