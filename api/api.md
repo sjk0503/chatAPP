@@ -1,5 +1,5 @@
-# api 정리
-## api 리스트
+# API 정리
+## API 리스트
 1. [회원가입 api](#회원가입-api)
 2. [사용자 정보 저장 api (회원가입 api와 연결)](#thread-id-assistant-id-생성-api)
 3. [dami api](#dami-api)
@@ -53,6 +53,8 @@ data = {
 
 ## dami api
 사용자의 input에 맞는 답변을 생성하여 return, 대화 내용은 save chat api를 통해 저장한다.
+### 코드 링크
+[dami.py](https://github.com/sjk0503/chatAPP/blob/main/aws/dami.py)
 ### 요청 데이터
 ```python
 data = {
@@ -71,6 +73,8 @@ data = {
 
 ## save chat api
 dami api에서 요청 받은 사용자 input과 반환할 gpt output을 db에 저장한다.
+### 코드 링크
+[save_chat_DB.py](https://github.com/sjk0503/chatAPP/blob/main/aws/save_chat_DB.py)
 ### 요청 데이터
 ```python
 data = {
@@ -89,6 +93,8 @@ data = {
 
 ## search api
 dami api에서 요청하는 api, 검색할 쿼리에 맞는 정보를 output한다.
+### 코드 링크
+[search_GPT.py](https://github.com/sjk0503/chatAPP/blob/main/aws/search_GPT.py)
 ### 요청 데이터
 ```python
 data = {
