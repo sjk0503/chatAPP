@@ -1,6 +1,8 @@
 # Database
 ## 선택한 DB
 > DB는 AWS의 RDS(MySQL)로 구축하였다.
+### 선택 이유
+> AWS 프리티어 내에서 테스트하기 위함 -> 추후 속도 개선을 위해 변경할 가능성 있음
 ## ERD
 <img width="813" alt="스크린샷 2024-06-08 오후 9 51 19" src="https://github.com/sjk0503/chatAPP/assets/108213769/d8973dc3-cfda-425b-81d3-5157cccfa4ac">
 
