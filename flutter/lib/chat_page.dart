@@ -17,14 +17,12 @@ class ChatPage extends StatefulWidget {
 class _ChatPageState extends State<ChatPage> {
   final TextEditingController _controller = TextEditingController();
   final List<Map<String, dynamic>> _messages = [];
-  final String _apiUrl = 'https://rdsi2vxj2h.execute-api.ap-northeast-2.amazonaws.com/jarvis/gptAPI';
+  final String _apiUrl = 'https://flnptw3076.execute-api.eu-north-1.amazonaws.com/gpt/gpts';
   final ScrollController _scrollController = ScrollController();
 
   void _sendMessage() {
     if (_controller.text.isNotEmpty) {
-      final time = DateFormat('HH:mm').format(
-        DateTime.now().toUtc().add(Duration(hours: 9)).toLocal(), // 한국 시간(KST)으로 변환
-      ); // 시간을 형식화
+      final time = DateFormat('HH:mm').format(DateTime.now().toLocal()); // 시간을 형식화
       setState(() {
         _messages.add({
           'sender': 'user',
@@ -56,9 +54,7 @@ class _ChatPageState extends State<ChatPage> {
 
         // data['body']는 평범한 문자열로
         final reply = data['body'];
-        final time = DateFormat('HH:mm').format(
-          DateTime.now().toUtc().add(Duration(hours: 9)).toLocal(), // 한국 시간(KST)으로 변환
-        ); // 시간을 형식화
+        final time = DateFormat('HH:mm').format(DateTime.now().toLocal()); // 시간을 형식화
 
         setState(() {
           _messages.add({
