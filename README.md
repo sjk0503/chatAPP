@@ -50,7 +50,7 @@ Flutter, AWS, openAI API, MySQL DB
 >
 > App과 각각의 API 연동 완료 (김성재)
 >
-> GPTs(dami) 베타 버전 개발 완료 (이하린)
+> Assistant(dami) 베타 버전 개발 완료 (이하린)
 >
 > App 테스트 중 발생하는 오류 수정 중(GPT 응답 실패 등)
 >
