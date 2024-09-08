@@ -4,7 +4,7 @@ import os
 from function_mappings import function_mappings
 
 client=OpenAI(
-    api_key="sk-proj-DcDELsorAoQc7uJ3i8pgT3BlbkFJZITwPNm3ENbXMW24NBt0"
+    api_key=""
     #api키 github공유 안됨
 )
 
