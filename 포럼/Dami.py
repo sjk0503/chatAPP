@@ -60,6 +60,13 @@ def submit_message(assistant_id,thread, user_message):
     return run
     
 
+
+def filter_response(response):
+    # Only allows letters, punctuation, and spaces
+    filtered_response = re.sub(r"[^a-zA-Z가-힣\s.,!?()\-0123456789]", "", response)
+    return filtered_response
+    
+
 def get_response(thread):
     # 스레드에서 메시지 목록을 가져옵니다.
     # 메시지를 오름차순으로 정렬할 수 있습니다. order="asc"로 지정합니다.
@@ -78,11 +85,6 @@ def wait_on_run(run, thread):
             break
     return run_check
 
-
-
-def remove_emojis(text):
-    answer=core.replace_emoji(text)
-    return answer
 
 
 
@@ -114,6 +116,7 @@ if __name__=='__main__':
                 
                 kwargs = json.loads(tool.function.arguments)
 
+                print(kwargs)
                 output = locals()[func_name](**kwargs)
                 tool_outputs.append(
                     {
@@ -130,17 +133,12 @@ if __name__=='__main__':
             run_check=wait_on_run(run,thread)
             if(run_check.status=="completed"):
                 answer=get_response(thread).data[0].content[0].text.value
-                cleaned_answer = remove_emojis(answer)
-                print(cleaned_answer)
+                filtered_answer=filter_response(answer)
+                print(filtered_answer)
             
         else:    
             answer=get_response(thread).data[0].content[0].text.value
-            cleaned_answer = remove_emojis(answer)
-            if "SSTTOOPP" in cleaned_answer:
-                modified_string = cleaned_answer.replace("SSTTOOPP", "")
-                print(modified_string)
-                print("[다미 님이 채팅방을 떠났습니다.]")
-            else:
-                print(cleaned_answer)
+            filtered_answer=filter_response(answer)
+            print(filtered_answer)
         
   
