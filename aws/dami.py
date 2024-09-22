@@ -612,7 +612,12 @@ def wait_on_run(run, thread):
             break
     return run_check
     
-
+# filtering
+def filter_response(response):
+    # Only allows letters, punctuation, and spaces
+    filtered_response = re.sub(r"[^a-zA-Z가-힣\s.,!?()\-0123456789]", "", response)
+    return filtered_response
+    
 
 # main
 def lambda_handler(event, context):
@@ -679,11 +684,14 @@ def lambda_handler(event, context):
             run_check = wait_on_run(run, THREAD_ID)
             if run_check.status == "completed":
                 answer = get_response(THREAD_ID).data[0].content[0].text.value
+                filtered_answer=filter_response(answer)
                 
             else:
                 answer = get_response(THREAD_ID).data[0].content[0].text.value
+                filtered_answer=filter_response(answer)
         else:
             answer = get_response(THREAD_ID).data[0].content[0].text.value
+            filtered_answer=filter_response(answer)
            
     except Exception as e:
         return {
@@ -693,5 +701,5 @@ def lambda_handler(event, context):
 
     return {
         'statusCode': 200,
-        'body': answer
+        'body': filtered_answer
     }
