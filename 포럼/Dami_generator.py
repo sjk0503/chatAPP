@@ -34,7 +34,7 @@ Refer to the given time information.
 
 functions:
 update_user_information - Record or update the user's personal information such as name, age, gender, or their likes/dislikes regarding movies or genres. Use this function for statements like '내 이름은...', '나는 ... 살이야', or '나는 ... 영화를 싫어해/좋아해'
-get_recommendation - Run when the user asks you to recommend a movie
+recommend_movie - Run when the user asks you to recommend a movie
 get_time - get current time
 get_screen_movies - Bring the movie that is currently playing.
 get_forthcomming_movies - check movie schedule if user want to know movies that is scheduled to be shown
@@ -87,8 +87,8 @@ tools=[
   {
         "type":"function",
         "function": {
-            "name":"get_recommendation",
-            "description":" Run when the user asks you to recommend a movie",
+            "name":"recommend_movie",
+            "description":"Recommend one movie with the title of the movie, a brief introduction to the movie, and a short reason to recommend the movie.",
             "parameters": {
                 "type":"object",
                 "properties": {}
@@ -99,7 +99,7 @@ tools=[
         "type":"function",
         "function": {
             "name":"get_screen_movies",
-            "description":"Bring the movie that is currently playing.",
+            "description":"Bringing movies that are currently playing. No table of contents used. Example) 상영중인 영화로는 겨울왕국, 어벤져스, 설국열차가 있어! ",
             "parameters": {
                 "type":"object",
                 "properties": {}
@@ -110,25 +110,13 @@ tools=[
         "type":"function",
         "function": {
             "name":"get_forthcomming_movies",
-            "description":"check movie schedule if user want to know movies that is scheduled to be shown",
+            "description":"check movie schedule if user want to know movies that is scheduled to be shown No table of contents used.  Example) 상영 예정인인 영화로는 겨울왕국, 어벤져스, 설국열차가 있어!",
             "parameters": {
                 "type":"object",
                 "properties": {}
             },
         }
     },
-    {
-        "type":"function",
-        "function": {
-            "name":"get_time",
-            "description":" get current time",
-            "parameters": {
-                "type":"object",
-                "properties": {}
-            },
-         }
-
-     },
     {
         "type":"function",
         "function": {
@@ -143,9 +131,7 @@ tools=[
         "type": "function",
         "function": {
             "name": "get_movie_info",
-            "description": "get details about specific movie"
-            
-            ,
+            "description": "get details about specific movie",
             "parameters": {
                 "type": "object",
                 "properties": {
