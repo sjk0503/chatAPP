@@ -35,7 +35,6 @@ Refer to the given time information.
 functions:
 update_user_information - Record or update the user's personal information such as name, age, gender, or their likes/dislikes regarding movies or genres. Use this function for statements like '내 이름은...', '나는 ... 살이야', or '나는 ... 영화를 싫어해/좋아해'
 recommend_movie - Run when the user asks you to recommend a movie
-get_time - get current time
 get_screen_movies - Bring the movie that is currently playing.
 get_forthcomming_movies - check movie schedule if user want to know movies that is scheduled to be shown
 get_temperature - get current temperature
