@@ -1,33 +1,40 @@
 # API 정리 (10.8)
 ## API 리스트
 1. Front-End 호출용
-   1. ㅁㄴㅇ
-3. Back-End 용
+   1. gptsAPI
+   2. creat_ID
+2. Back-End 용
+   1. save_chat
+   2. get_ID
+   3. save_ID
+  
+
 1. [회원가입 api](#회원가입-api)
 2. [사용자 정보 저장 api (회원가입 api와 연결)](#thread-id-assistant-id-생성-api)
 3. [dami api](#dami-api)
 4. [save chat api (dami api와 연결)](#save-chat-api)
 5. [search api(dami api와 연결)](#search-api)
-## 회원가입 api
-아이디, 비밀번호와 이름을 받아서 쓰레드ID를 생성하고, DB에 저장하는 API를 호출한 뒤, 사용자 정보를 DB에 저장한다.</br>
-DB에 저장하는 API와 분리하는 이유는 rds와 연결한 lambda 함수는 보안상 문제로 쓰레드ID를 생성할 수 없기 때문.
+
+
+## gptsAPI
+gpt 대화 생성 api <br>
+get_ID, save_chat API와 연동되어, 원하는 bot number의 ID를 DB에서 가져오고, 생성한 대화 내용을 자동으로 DB에 저장한다.
 ### 코드 링크
 [sign_up.py](https://github.com/sjk0503/chatAPP/blob/main/aws/sign_up.py)
 ### 요청 데이터
 ```python
 data = {
-    "userid": userid,
-    "password": password,
-    "name": name
+   "botNum": botNum, # ex) 1 or 2 or 3 ...
+   "user_input": user_input
 }
 ```
 ### 정상 메세지
->'statusCode': 200
-### 에러 메세지
-1. 아이디 중복 시
-    >'statusCode': 400
-3. 서버 에러
-    >'statusCode': 500
+```python
+return {
+   "statusCode": 200,
+   "body": answer # gpt 응답
+}
+```
 
 ## 사용자 정보 저장 api
 요청받은 데이터들을 db에 저장한다.
