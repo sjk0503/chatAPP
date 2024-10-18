@@ -12,7 +12,7 @@
 gpt 대화 생성 api <br>
 get_ID, save_chat API와 연동되어, 원하는 bot number의 ID를 DB에서 가져오고, 생성한 대화 내용을 자동으로 DB에 저장한다.
 ### 코드 링크
-[gptsAPI.py](aws/gptsAPI.py)
+[gptsAPI.py](../aws/gptsAPI.py)
 ### 요청 데이터
 ```python
 data = {
