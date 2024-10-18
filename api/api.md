@@ -7,16 +7,8 @@
    1. save_chat
    2. get_ID
    3. save_ID
-  
 
-1. [회원가입 api](#회원가입-api)
-2. [사용자 정보 저장 api (회원가입 api와 연결)](#thread-id-assistant-id-생성-api)
-3. [dami api](#dami-api)
-4. [save chat api (dami api와 연결)](#save-chat-api)
-5. [search api(dami api와 연결)](#search-api)
-
-
-## gptsAPI
+## gptsAPI
 gpt 대화 생성 api <br>
 get_ID, save_chat API와 연동되어, 원하는 bot number의 ID를 DB에서 가져오고, 생성한 대화 내용을 자동으로 DB에 저장한다.
 ### 코드 링크
@@ -36,85 +28,81 @@ return {
 }
 ```
 
-## 사용자 정보 저장 api
-요청받은 데이터들을 db에 저장한다.
+## creat_ID
+사용자가 원하는 쿼리에 기반한 gpt 모델 ID 생성 API<br>
+save_ID API와 연동되어, 생성한 ID를 DB에 저장한다.
 ### 코드 링크
 [save_userData_DB.py](https://github.com/sjk0503/chatAPP/blob/main/aws/save_userData_DB.py)
 ### 요청 데이터
 ```python
 data = {
-    "userid": userid,
-    "password": password,
-    "name": name,
-    "threadid": threadid
+    "instructions": instructions # 사용자가 원하는 쿼리
 }
 ```
-### 정상 메세지
->'statusCode': 200
-### 에러 메세지
-1. thread id 발급 에러
-   >'statusCode': 400
-2. assistant id 발급 에러
-   >'statusCode': 400
-3. 서버 에러
-   >'statusCode': 500
-4. db 접근 에러
-   >'statusCode': 300
+### 정상 메세지 (ID도 리턴되지만, Front에서 따로 처리할 필요는 없음)
+```python
+return {
+   'statusCode': 200,
+   'thread_ID': thread_ID,
+   'assistant_ID': assistant_ID
+}
+```
 
-## dami api
-사용자의 input에 맞는 답변을 생성하여 return, 대화 내용은 save chat api를 통해 저장한다.
+## save_chat
+gptsAPI에서 호출하는 API <br>
+대화 내용을 DB에 저장한다.
 ### 코드 링크
 [dami.py](https://github.com/sjk0503/chatAPP/blob/main/aws/dami.py)
 ### 요청 데이터
 ```python
 data = {
-    "user_input": user_input
+   "botNum": botNum, # 대화한 bot 번호
+   "user_input": user_input, # 사용자 대화
+   "gpt_input": gpt_input # gpt가 생성한 대화
 }
 ```
 ### 정상 메세지
->'statusCode': 200
-### 에러 메세지
-1. gpt 에러
-   >'statusCode':400
-2. db 에러
-   >'statusCode': 300
-3. 서버 에러
-   >'statusCode': 500
+```python
+return {
+   'statusCode': 200,
+   'body': json.dumps('save chat successful')
+}
+```
 
-## save chat api
-dami api에서 요청 받은 사용자 input과 반환할 gpt output을 db에 저장한다.
+## get_ID
+botNum에 맞는 thread ID와 assistant ID를 DB에서 가져오는 API
 ### 코드 링크
 [save_chat_DB.py](https://github.com/sjk0503/chatAPP/blob/main/aws/save_chat_DB.py)
 ### 요청 데이터
 ```python
 data = {
-    "userid": userid,
-    "user_input": user_input,
-    "gpt_input": gpt_input
+   "botNum": botNum
 }
 ```
 ### 정상 메세지
->'statusCode': 200
-### 에러 메세지
-1. db 에러
-   >'statusCode': 300
-2. 서버 에러
-   >'statusCode': 500
+```python
+return {
+   'statusCode': 200,
+   'thread_id': thread_id,
+   'assistant_id': assistant_id
+}
+```
 
-## search api
-dami api에서 요청하는 api, 검색할 쿼리에 맞는 정보를 output한다.
+## save_ID
+사용자 요청 쿼리에 맞게 생성한 GPT ID를 DB에 저장하는 API
 ### 코드 링크
 [search_GPT.py](https://github.com/sjk0503/chatAPP/blob/main/aws/search_GPT.py)
 ### 요청 데이터
 ```python
 data = {
-    "query": query
+   "thread_ID": thread_ID,
+   "assistant_ID": assistant_ID
 }
 ```
 ### 정상 메세지
->'statusCode': 200
-### 에러 메세지
-1. 답변 생성 에러
-   >'statusCode': 400
-2. 서버 에러
-   >'statusCode': 500
+```python
+return {
+   'statusCode': 200,
+   'body': json.dumps('save ID successful')
+}
+```
