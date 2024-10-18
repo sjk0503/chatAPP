@@ -1,7 +1,7 @@
 # API 정리 (10.8)
 ## API 리스트
 1. Front-End 호출용
-   1. gptsAPI
+   1. [gptsAPI](#gptsAPI)
    2. creat_ID
 2. Back-End 용
    1. save_chat
