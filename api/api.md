@@ -1,5 +1,8 @@
-# API 정리
+# API 정리 (10.8)
 ## API 리스트
+1. Front-End 호출용
+   1. ㅁㄴㅇ
+3. Back-End 용
 1. [회원가입 api](#회원가입-api)
 2. [사용자 정보 저장 api (회원가입 api와 연결)](#thread-id-assistant-id-생성-api)
 3. [dami api](#dami-api)
