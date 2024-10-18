@@ -32,7 +32,7 @@ return {
 사용자가 원하는 쿼리에 기반한 gpt 모델 ID 생성 API<br>
 save_ID API와 연동되어, 생성한 ID를 DB에 저장한다.
 ### 코드 링크
-[save_userData_DB.py](https://github.com/sjk0503/chatAPP/blob/main/aws/save_userData_DB.py)
+[creat_ID.py](../aws/creat_ID.py)
 ### 요청 데이터
 ```python
 data = {
@@ -52,7 +52,7 @@ return {
 gptsAPI에서 호출하는 API <br>
 대화 내용을 DB에 저장한다.
 ### 코드 링크
-[dami.py](https://github.com/sjk0503/chatAPP/blob/main/aws/dami.py)
+[save_chat.py](../aws/save_chat.py)
 ### 요청 데이터
 ```python
 data = {
@@ -72,7 +72,7 @@ return {
 ## get_ID
 botNum에 맞는 thread ID와 assistant ID를 DB에서 가져오는 API
 ### 코드 링크
-[save_chat_DB.py](https://github.com/sjk0503/chatAPP/blob/main/aws/save_chat_DB.py)
+[get_ID.py](../aws/get_ID.py)
 ### 요청 데이터
 ```python
 data = {
@@ -91,7 +91,7 @@ return {
 ## save_ID
 사용자 요청 쿼리에 맞게 생성한 GPT ID를 DB에 저장하는 API
 ### 코드 링크
-[search_GPT.py](https://github.com/sjk0503/chatAPP/blob/main/aws/search_GPT.py)
+[save_ID.py](../aws/save_ID.py)
 ### 요청 데이터
 ```python
 data = {
