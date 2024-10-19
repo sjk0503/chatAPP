@@ -1,13 +1,13 @@
 # API 정리 (10.8)
 ## API 리스트
 1. Front-End 호출용
-   1. [gptsAPI](##gptsAPI)
+   1. [gptsAPI](#gptsAPI)
    2. [creat_ID](#creat_ID)
-   3. [get_ID](get_ID) - (부분적 사용)
+   3. [get_ID](#get_ID) - (부분적 사용)
 2. Back-End 용
-   1. [save_chat](save_chat)
-   2. [get_ID](get_ID) - (부분적 사용)
-   3. [save_ID](save_ID)
+   1. [save_chat](#save_chat)
+   2. [get_ID](#get_ID) - (부분적 사용)
+   3. [save_ID](#save_ID)
 
 ## gptsAPI
 gpt 대화 생성 api <br>
