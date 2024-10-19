@@ -117,7 +117,7 @@ return {
    'assistant_id': assistant_id
 }
 ```
-case == cmd 경우 (ex. thread_id or characterName or prompt 등)
+case == cmd 경우 (ex. 'thread_id' or 'characterName' or 'prompt' 등)
 ```python
 return {
    'statusCode': 200,
