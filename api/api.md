@@ -3,9 +3,10 @@
 1. Front-End 호출용
    1. [gptsAPI](#gptsAPI)
    2. [creat_ID](#creat_ID)
+   3. [get_ID](get_ID) - (부분적 사용)
 2. Back-End 용
    1. [save_chat](save_chat)
-   2. [get_ID](get_ID)
+   2. [get_ID](get_ID) - (부분적 사용)
    3. [save_ID](save_ID)
 
 ## gptsAPI
@@ -36,7 +37,14 @@ save_ID API와 연동되어, 생성한 ID를 DB에 저장한다.
 ### 요청 데이터
 ```python
 data = {
-    "instructions": instructions # 사용자가 원하는 쿼리
+   "characterName": characterName,
+   "selectedCategories": selectedCategories,
+   "shortDescription": shortDescription,
+   "detailedDescription": detailedDescription,
+   "prompt": prompt,
+   "isSearchingLatestInfo": isSearchingLatestInfo,
+   "isUpdatingUserInfo": isUpdatingUserInfo,
+   "characterImage": characterImage
 }
 ```
 ### 정상 메세지 (ID도 리턴되지만, Front에서 따로 처리할 필요는 없음)
@@ -70,21 +78,50 @@ return {
 ```
 
 ## get_ID
-botNum에 맞는 thread ID와 assistant ID를 DB에서 가져오는 API
+botNum에 맞는 thread ID와 assistant ID를 DB에서 가져오는 API<br>
+case 데이터를 받아서 각 case 별로 리턴하는 데이터를 달리함
+> case == 'all', 모든 정보 리턴 <br>
+> case == 'id', thread, assistant id 리턴<br>
+> case == '{cmd}', {cmd} 레코드 리턴<br>
 ### 코드 링크
 [get_ID.py](../aws/get_ID.py)
 ### 요청 데이터
 ```python
 data = {
-   "botNum": botNum
+   "botNum": int(botNum),
+   "case": cmd # "all" or "id" or 원하는 레코드명
 }
 ```
 ### 정상 메세지
+case == 'all' 경우
+```python
+return {
+   'statusCode': 200,
+   'thread_id': thread_id,
+   'assistant_id': assistant_id,
+   'characterName': characterName,
+   'selectedCategories': selectedCategories,
+   'shortDescription': shortDescription,
+   'detailedDescription': detailedDescription,
+   'prompt': prompt,
+   'isSearchingLatestInfo': isSearchingLatestInfo,
+   'isUpdatingUserInfo': isUpdatingUserInfo,
+   'characterImage': characterImage
+}
+```
+case == 'id' 경우
 ```python
 return {
    'statusCode': 200,
    'thread_id': thread_id,
    'assistant_id': assistant_id
+}
+```
+case == cmd 경우 (ex. thread_id or characterName or prompt 등)
+```python
+return {
+   'statusCode': 200,
+   case: case # 'thread_id': thread_id or 'characterName': characterName or 'prompt': prompt
 }
 ```
 
@@ -96,7 +133,15 @@ return {
 ```python
 data = {
    "thread_ID": thread_ID,
-   "assistant_ID": assistant_ID
+   "assistant_ID": assistant_ID,
+   "characterName": characterName,
+   "selectedCategories": selectedCategories,
+   "shortDescription": shortDescription,
+   "detailedDescription": detailedDescription,
+   "prompt": prompt,
+   "isSearchingLatestInfo": isSearchingLatestInfo,
+   "isUpdatingUserInfo": isUpdatingUserInfo,
+   "characterImage": characterImage
 }
 ```
 ### 정상 메세지
