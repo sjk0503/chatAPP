@@ -1,0 +1,83 @@
+name: dami_project
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.4.1 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.6
+  image_picker: ^0.8.4+10
+  http: ^0.13.3  # http 패키지 추가
+  intl: ^0.19.0  # intl 패키지 추가
+  flutter_localizations:
+    sdk: flutter
+  flutter_signin_button: ^2.0.0
+  font_awesome_flutter: ^9.2.0
+  google_sign_in: ^5.1.0
+  flutter_rating_bar: ^4.0.0
+  shared_preferences: ^2.0.13
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/logo4.png
+    - assets/images/googleW.png
+    - assets/images/naverG.png
+    - assets/images/kakaoY.png
+    - assets/images/appleW.png
+    - assets/images/profile/leedami.png
+    - assets/images/logo4.png
+    - assets/images/profile/cat.jpg
+    - assets/images/profile/leedami.png
+    - assets/images/profile/englishteacher.jpg
+    - assets/images/profile/lawyer.jpg
+    - assets/images/profile/music.png
+    - assets/images/profile/tarot.jpg
+    - assets/images/profile/doctor.jpg
+    - assets/images/profile/announcer.jpg
+    - assets/images/profile/shop.jpg
+  fonts:
+    - family: ThirthyDemo
+      fonts:
+        - asset: fonts/Thirthy Demo.ttf
+    - family: DancingScript
+      fonts:
+        - asset: fonts/DancingScript-VariableFont_wght.ttf
+    - family: PretendardBlack
+      fonts:
+        - asset: fonts/Pretendard-Black.otf
+    - family: PretendardBold
+      fonts:
+        - asset: fonts/Pretendard-Bold.otf
+    - family: PretendardExtraBold
+      fonts:
+        - asset: fonts/Pretendard-ExtraBold.otf
+    - family: PretendardExtraLight
+      fonts:
+        - asset: fonts/Pretendard-ExtraLight.otf
+    - family: PretendardLight
+      fonts:
+        - asset: fonts/Pretendard-Light.otf
+    - family: PretendardMedium
+      fonts:
+        - asset: fonts/Pretendard-Medium.otf
+    - family: PretendardRegular
+      fonts:
+        - asset: fonts/Pretendard-Regular.otf
+    - family: PretendardSemiBold
+      fonts:
+        - asset: fonts/Pretendard-SemiBold.otf
+    - family: PretendardThin
+      fonts:
+        - asset: fonts/Pretendard-Thin.otf
+
