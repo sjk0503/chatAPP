@@ -208,7 +208,7 @@ def lambda_handler(event, context):
 
     # DB에 키 저장하기
     try:
-        url = "https://3i8lrr8hcj.execute-api.eu-north-1.amazonaws.com/dami/save_ID"
+        url = ""
         data = {
             "thread_ID": thread_ID,
             "assistant_ID": assistant_ID,
