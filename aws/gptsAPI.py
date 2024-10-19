@@ -161,7 +161,7 @@ def update_user_information(key_name, value):
 
 
 def get_movie_genres_and_keywords(movie_name):
-    search_url = f""
+    search_url = f"
     params = {
         "api_key": TMDB_API_KEY,
         "query": movie_name,
@@ -174,7 +174,7 @@ def get_movie_genres_and_keywords(movie_name):
         results = response.json().get('results', [])
         if results:
             movie_id = results[0]['id']
-            details_url = f"{movie_id}"
+            details_url = f""
             details_params = {
                 "api_key": TMDB_API_KEY,
                 "append_to_response": "keywords"
@@ -635,7 +635,8 @@ def lambda_handler(event, context):
         url = ""
 
         data = {
-            "botNum": int(botNum)
+            "botNum": int(botNum),
+            "case": "id"
         }
 
         # 요청 헤더 설정
