@@ -27,13 +27,27 @@ def lambda_handler(event, context):
 
     thread_ID = body['thread_ID']
     assistant_ID = body['assistant_ID']
+    characterName = body['characterName']
+    selectedCategories = body['selectedCategories']
+    shortDescription = body['shortDescription']
+    detailedDescription = body['detailedDescription']
+    prompt = body['prompt']
+    isSearchingLatestInfo = body['isSearchingLatestInfo']
+    isUpdatingUserInfo = body['isUpdatingUserInfo']
+    characterImage = body['characterImage']
+
 
     try:
         with conn.cursor() as cur:
             # 사용자의 입력을 저장
-            cur.execute("INSERT INTO bot (thread_id, assistant_id) VALUES (%s, %s)",
-                        (thread_ID, assistant_ID))
-            logger.info(f"ID 저장 완료: {thread_ID}, {assistant_ID}")
+            cur.execute("""INSERT INTO bot (thread_id, assistant_id, characterName, selectedCategories, 
+            shortDescription, detailedDescription, prompt, isSearchingLatestInfo, isUpdatingUserInfo, 
+            characterImage) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""",
+                        (thread_ID, assistant_ID, characterName, selectedCategories, shortDescription, detailedDescription, prompt, True, True, characterImage))
+
+
+            logger.info(f"""ID 저장 완료: {thread_ID}, {assistant_ID}, {characterName}, {selectedCategories}, {shortDescription}, 
+                                        {detailedDescription}, {prompt}, {True}, {True}, {characterImage}""")
 
             # 변경 사항 커밋
             conn.commit()
