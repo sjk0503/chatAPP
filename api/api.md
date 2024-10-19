@@ -1,7 +1,7 @@
 # API 정리 (10.8)
 ## API 리스트
 1. Front-End 호출용
-   1. [gptsAPI](#gptsAPI)
+   1. [gptsAPI](##gptsAPI)
    2. [creat_ID](#creat_ID)
    3. [get_ID](get_ID) - (부분적 사용)
 2. Back-End 용
