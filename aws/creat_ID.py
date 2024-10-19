@@ -151,6 +151,7 @@ tools = [
 
 
 def create_assistant(instruction):
+    logger.info(f"instruction: {instruction}")
     assistant = client.beta.assistants.create(
         instructions=instruction,
         model="gpt-4o-2024-05-13",
@@ -162,12 +163,26 @@ def create_assistant(instruction):
 
 
 def lambda_handler(event, context):
-    init_info = "Your information: "
+    init_info = "Your information \n"
+    _characterName = "Name: "
+    _selectedCategories = "Your Categories: "
+    _shortDescription = "shortDescription: "
+    _detailedDescription = "detailedDescription: "
+    _prompt = "prompt: "
     # event에서 사용자 입력 가져오기
     try:
         body = json.loads(event['body'])
-        user_input = body['instructions']
-        logger.info(f"instructions: {user_input}")
+        characterName = body['characterName'] + '\n'
+        selectedCategories = body['selectedCategories'] + '\n'
+        shortDescription = body['shortDescription'] + '\n'
+        detailedDescription = body['detailedDescription'] + '\n'
+        prompt = body['prompt'] + '\n'
+        # 추가 기능은 나중에 구현
+        isSearchingLatestInfo = body['isSearchingLatestInfo']
+        isUpdatingUserInfo = body['isUpdatingUserInfo']
+        characterImage = body['characterImage']
+        logger.info(f"""receive data: {characterName}, {selectedCategories}, {shortDescription}, {detailedDescription},
+                                        {prompt}, {isSearchingLatestInfo}, {isUpdatingUserInfo}, {characterImage}""")
     except (KeyError, TypeError, json.JSONDecodeError) as e:
         return {
             'statusCode': 400,
@@ -176,7 +191,12 @@ def lambda_handler(event, context):
 
     # 키 만들기
     try:
-        init_info += user_input
+        _characterName += characterName + '\n'
+        _selectedCategories += selectedCategories + '\n'
+        _shortDescription += shortDescription + '\n'
+        _detailedDescription += detailedDescription + '\n'
+        _prompt += prompt + '\n'
+        init_info += _characterName + _selectedCategories + _shortDescription + _detailedDescription
         assistant_ID, thread_ID = create_assistant(init_info + instructions)
         logger.info(f"thread, assistant: {thread_ID}, {assistant_ID}")
     except Exception as e:
@@ -188,10 +208,18 @@ def lambda_handler(event, context):
 
     # DB에 키 저장하기
     try:
-        url = ""
+        url = "https://3i8lrr8hcj.execute-api.eu-north-1.amazonaws.com/dami/save_ID"
         data = {
             "thread_ID": thread_ID,
-            "assistant_ID": assistant_ID
+            "assistant_ID": assistant_ID,
+            "characterName": characterName,
+            "selectedCategories": selectedCategories,
+            "shortDescription": shortDescription,
+            "detailedDescription": detailedDescription,
+            "prompt": prompt,
+            "isSearchingLatestInfo": isSearchingLatestInfo,
+            "isUpdatingUserInfo": isUpdatingUserInfo,
+            "characterImage": characterImage
         }
         headers = {
             "Content-Type": "application/json"
