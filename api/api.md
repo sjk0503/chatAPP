@@ -1,4 +1,4 @@
-# API 정리 (10.8)
+# API 정리 (10.19)
 ## API 리스트
 1. Front-End 호출용
    1. [gptsAPI](#gptsAPI)
