@@ -8,6 +8,7 @@
    1. [save_chat](#save_chat)
    2. [get_ID](#get_ID) - (부분적 사용)
    3. [save_ID](#save_ID)
+   4. [search](#search)
 
 ## gptsAPI
 gpt 대화 생성 api <br>
@@ -32,6 +33,7 @@ return {
 ## creat_ID
 사용자가 원하는 쿼리에 기반한 gpt 모델 ID 생성 API<br>
 save_ID API와 연동되어, 생성한 ID를 DB에 저장한다.
+isSearchingLatestInfo와 isUpdatingUserInfo은 1 또는 0으로 정수로 처리해야한다.
 ### 코드 링크
 [creat_ID.py](../aws/creat_ID.py)
 ### 요청 데이터
@@ -42,9 +44,10 @@ data = {
    "shortDescription": shortDescription,
    "detailedDescription": detailedDescription,
    "prompt": prompt,
-   "isSearchingLatestInfo": isSearchingLatestInfo,
-   "isUpdatingUserInfo": isUpdatingUserInfo,
-   "characterImage": characterImage
+   "isSearchingLatestInfo": isSearchingLatestInfo, 1 또는 0 ('1', '0' 하면 안됨)
+   "isUpdatingUserInfo": isUpdatingUserInfo, 1 또는 0 ('1', '0' 하면 안됨)
+   "characterImage": characterImage,
+   "keyword": keyword
 }
 ```
 ### 정상 메세지 (ID도 리턴되지만, Front에서 따로 처리할 필요는 없음)
@@ -149,5 +152,22 @@ data = {
 return {
    'statusCode': 200,
    'body': json.dumps('save ID successful')
+}
+```
+
+## search
+사용자 쿼리에 대한 검색 결과를 리턴하는 API
+create_ID api와 연동되어, 사용자가 입력한 keyword에 대한 검색 결과를 키를 생성할 때 포함하여 생성한다.
+### 요청 데이터
+```python
+data = {
+   "user_input": keyword
+}
+```
+### 정상 메세지
+```python
+return {
+   'statusCode': 200,
+   'body': query # 검색 결과를 담은 내용
 }
 ```
