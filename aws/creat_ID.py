@@ -17,29 +17,22 @@ instructions = """
 Do not ask users if they need help. Do not offer solutions to complex problems.
 Refer to the given time information.
 Please keep in mind, the information in ‘Your information’ is your identity. Generate an answer based on that information.
-
-functions:
-update_user_information - Record or update the user's personal information such as name, age, gender, or their likes/dislikes regarding movies or genres. Use this function for statements like '내 이름은...', '나는 ... 살이야', or '나는 ... 영화를 싫어해/좋아해'
-recommend_movie - Run when the user asks you to recommend a movie
-get_screen_movies - Bring the movie that is currently playing.
-get_forthcomming_movies - check movie schedule if user want to know movies that is scheduled to be shown
-get_temperature - get current temperature
-get_movie_info - get details about specific movie
-do_WebSearch - do websearch if neccessary
+'Search' is information obtained by searching keywords about you on the Internet.
 """
 
-tools = [
-    {
-        "type": "function",
-        "function": {
-            "name": "update_user_information",
-            "description": "Record or update the user's personal information such as name, age, gender, or their likes/dislikes regarding movies or genres. Use this function for statements like '내 이름은...', '나는 ... 살이야', or '나는 ... 영화를 싫어해/좋아해'",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "key_name": {
-                        "type": "string",
-                        "description": """
+tools = []
+
+update_user_information = {
+    "type": "function",
+    "function": {
+        "name": "update_user_information",
+        "description": "Record or update the user's personal information such as name, age, gender, or their likes/dislikes regarding movies or genres. Use this function for statements like '내 이름은...', '나는 ... 살이야', or '나는 ... 영화를 싫어해/좋아해'",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "key_name": {
+                    "type": "string",
+                    "description": """
                        json key name. It must be one of the following:
                        like_genres
                        dislike_genres
@@ -48,106 +41,45 @@ tools = [
                        old_movies - users can watch old movies
                        dislike_country - user don't want to watch this country movies.
                        """
+                },
+                "value": {
+                    "oneOf": [
+                        {
+                            "type": "boolean",
+                            "description": "json value. For key name 'old_movies', False==if user don't like to watch movie that more than five years."
+                        },
+                        {
+                            "type": "string",
+                            "description": "if key_name = like_genres or dislike_genres, value is oneof' Action/Adventure/Animation/Comedy/Crime/Documentary/Drama/Family/Fantasy/History/Horror/Music/Mystery/Romance/Science/TV/Thriller/War/Western."
+                        }
+                    ]
+                }
+            },
+            "required": [
+                "key_name",
+                "value"
+            ]
+        },
+    }
+}
 
-                    },
-                    "value": {
-                        "oneOf": [
-                            {
-                                "type": "boolean",
-                                "description": "json value. For key name 'old_movies', False==if user don't like to watch movie that more than five years."
-                            },
-                            {
-                                "type": "string",
-                                "description": "if key_name = like_genres or dislike_genres, value is oneof' Action/Adventure/Animation/Comedy/Crime/Documentary/Drama/Family/Fantasy/History/Horror/Music/Mystery/Romance/Science/TV/Thriller/War/Western."
-                            }
-                        ]
-                    }
-                },
-                "required": [
-                    "key_name",
-                    "value"
-                ]
+do_WebSearch = {
+    "type": "function",
+    "function": {
+        "name": "do_WebSearch",
+        "description": "do websearch if neccessary",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "query": {
+                    "type": "string",
+                    "description": "The search query"
+                }
             },
-        }
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "recommend_movie",
-            "description": "Recommend one movie with the title of the movie, a brief introduction to the movie, and a short reason to recommend the movie.",
-            "parameters": {
-                "type": "object",
-                "properties": {}
-            },
-        }
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "get_screen_movies",
-            "description": "Bringing movies that are currently playing. No table of contents used. Example) 상영중인 영화로는 겨울왕국, 어벤져스, 설국열차가 있어! ",
-            "parameters": {
-                "type": "object",
-                "properties": {}
-            },
-        }
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "get_forthcomming_movies",
-            "description": "check movie schedule if user want to know movies that is scheduled to be shown No table of contents used.  Example) 상영 예정인인 영화로는 겨울왕국, 어벤져스, 설국열차가 있어!",
-            "parameters": {
-                "type": "object",
-                "properties": {}
-            },
-        }
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "get_temperature",
-            "description": "get current temperature",
-            "parameters": {
-                "type": "object",
-                "properties": {}
-            },
-        }
-    }, {
-        "type": "function",
-        "function": {
-            "name": "get_movie_info",
-            "description": "get details about specific movie",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "movie_title": {
-                        "type": "string",
-                        "description": "movie title"
-                    }
-                },
-                "required": ["movie_title"]
-            },
-        }
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "do_WebSearch",
-            "description": "do websearch if neccessary",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "query": {
-                        "type": "string",
-                        "description": "The search query"
-                    }
-                },
-                "required": ["query"]
-            },
-        }
-    },
-]
+            "required": ["query"]
+        },
+    }
+}
 
 
 def create_assistant(instruction):
@@ -169,6 +101,7 @@ def lambda_handler(event, context):
     _shortDescription = "shortDescription: "
     _detailedDescription = "detailedDescription: "
     _prompt = "prompt: "
+    _keyword = "Search: "
     # event에서 사용자 입력 가져오기
     try:
         body = json.loads(event['body'])
@@ -177,10 +110,10 @@ def lambda_handler(event, context):
         shortDescription = body['shortDescription'] + '\n'
         detailedDescription = body['detailedDescription'] + '\n'
         prompt = body['prompt'] + '\n'
-        # 추가 기능은 나중에 구현
         isSearchingLatestInfo = body['isSearchingLatestInfo']
         isUpdatingUserInfo = body['isUpdatingUserInfo']
         characterImage = body['characterImage']
+        keyword = body['keyword']
         logger.info(f"""receive data: {characterName}, {selectedCategories}, {shortDescription}, {detailedDescription},
                                         {prompt}, {isSearchingLatestInfo}, {isUpdatingUserInfo}, {characterImage}""")
     except (KeyError, TypeError, json.JSONDecodeError) as e:
@@ -191,12 +124,30 @@ def lambda_handler(event, context):
 
     # 키 만들기
     try:
+        # 키워드에 대한 결과 가져오기
+        url = ""
+        data = {
+            "user_input": keyword
+        }
+        headers = {
+            "Content-Type": "application/json"
+        }
+        logger.info("API 호출 시도")
+        response = requests.post(url, data=json.dumps(data), headers=headers)
+
         _characterName += characterName + '\n'
         _selectedCategories += selectedCategories + '\n'
         _shortDescription += shortDescription + '\n'
         _detailedDescription += detailedDescription + '\n'
         _prompt += prompt + '\n'
-        init_info += _characterName + _selectedCategories + _shortDescription + _detailedDescription
+        _keyword += response.json()['body'] + '\n'
+        init_info += _characterName + _selectedCategories + _shortDescription + _detailedDescription + _prompt + _keyword
+        # 추가 기능
+        if bool(isSearchingLatestInfo):
+            tools.append(do_WebSearch)
+        if bool(isUpdatingUserInfo):
+            tools.append(update_user_information)
+        # 키 생성
         assistant_ID, thread_ID = create_assistant(init_info + instructions)
         logger.info(f"thread, assistant: {thread_ID}, {assistant_ID}")
     except Exception as e:
